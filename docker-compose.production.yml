@@ -22,7 +22,7 @@ services:
 
   smtp:
     image: namshi/smtp
-    container_name: smtp_relay
+    container_name: smtp
     restart: always
     env_file: .env
 
