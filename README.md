@@ -1,6 +1,6 @@
-# docker-rhymix
+# docker-gnuboard
 
-These are some reasons why use this Docker Compose in your `Rhymix` production environment.
+These are some reasons why use this Docker Compose in your `Gnuboard` production environment.
 
 ☝️ 2 command to install
 
@@ -8,7 +8,7 @@ These are some reasons why use this Docker Compose in your `Rhymix` production e
 
 🔒 SSL auto-renewed
 
-🆕 Latest docker images and Rhymix
+🆕 Latest docker images and Gnuboard
 
 🚧 Phpmyadmin for database administration
 
@@ -17,12 +17,11 @@ These are some reasons why use this Docker Compose in your `Rhymix` production e
 ## Stack
 
 - Ubuntu 20.04 LTS
-- Rhymix latest(including rewrite configuration)
+- Gnuboard latest(including rewrite configuration)
 - Php7.4 latest docker image(alpine)
 - MariaDB latest docker image
 - Nginx latest docker image(alpine)
 - Certbot latest docker image
-- Redis latest docker image(alpine)
 - Phpmyadmin latest docker image(fpm-alpine)
 - Portainer latest docker image
 - Docker
@@ -41,10 +40,10 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt install curl git -y && sud
 ```
 
 ```bash
-curl -s https://raw.githubusercontent.com/woosungchoi/docker-rhymix/main/dc | bash -s setup
+curl -s https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dc | bash -s setup
 ```
 
-## Rhymix Install Configuration
+## Gnuboard Install Configuration
 
 DB : `mysql`
 
@@ -59,21 +58,9 @@ DB Password : `YOUR DATABASE PASSWORD`
 DB name : `YOUR DATABASE NAME`
 
 
-## Rhymix Redis cache configuration
-
-Admin panel(관리자 페이지) -> Configuration(설정) -> System configuration(시스템 설정) -> Advanced configuration(고급설정)
-
-Cache enable(캐시 사용) : `redis`
-
-Host(호스트) : `redis`
-
-Port(포트) : `6379`
-
-DB number(DB번호) : `1`
-
 ## URLs
 
-Rhymix : https://yourdomain.com
+Gnuboard : https://yourdomain.com
 
 Phpmyadmin : https://pma.yourdomain.com
 

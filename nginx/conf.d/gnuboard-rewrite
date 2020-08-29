@@ -1,0 +1,11 @@
+#### 그누보드5 nginx rules BEGIN #####
+if (!-e $request_filename){
+rewrite ^/content/([0-9a-zA-Z_]+)$ /bbs/content.php?co_id=$1&rewrite=1 break;
+rewrite ^/content/([^/]+)/$ /bbs/content.php?co_seo_title=$1&rewrite=1 break;
+rewrite ^/rss/([0-9a-zA-Z_]+)$ /bbs/rss.php?bo_table=$1 break;
+rewrite ^/([0-9a-zA-Z_]+)$ /bbs/board.php?bo_table=$1&rewrite=1 break;
+rewrite ^/([0-9a-zA-Z_]+)/write$ /bbs/write.php?bo_table=$1&rewrite=1 break;
+rewrite ^/([0-9a-zA-Z_]+)/([^/]+)/$ /bbs/board.php?bo_table=$1&wr_seo_title=$2&rewrite=1 break;
+rewrite ^/([0-9a-zA-Z_]+)/([0-9]+)$ /bbs/board.php?bo_table=$1&wr_id=$2&rewrite=1 break;
+}
+#### 그누보드5 nginx rules END #####

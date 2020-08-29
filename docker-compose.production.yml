@@ -11,16 +11,6 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - ./data/dbdata:/var/lib/mysql
-
-  redis:
-    container_name: redis
-    image: redis:alpine
-    restart: unless-stopped
-    volumes:
-      - ./data/dataredis:/data
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru --appendonly yes
   
   certbot:
     image: certbot/certbot:latest

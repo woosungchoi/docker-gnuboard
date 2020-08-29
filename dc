@@ -17,11 +17,11 @@ if [ "$1" == "setup" ]; then
   && read -p "Enter your domain (ex:mydomain.com) : " DOMAIN
   read -p "Enter your email address for SSL certificate (ex:myemail@email.com) : " EMAIL
   read -p "Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
-  read -p "Enter your database username for rhymix (ex:dbuser) : " DATABASEUSER
-  read -p "Enter your database password for rhymix (ex:dbpassword) : " -i "dbuserpassword" DATABASEPASSWORD
-  read -p "Enter your database name for rhymix (ex:rhymix) : " DATABASE \
-  && rm -rf rhymix; git clone https://github.com/woosungchoi/docker-rhymix rhymix \
-  && cd rhymix \
+  read -p "Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
+  read -p "Enter your database password for gnuboard (ex:dbpassword) : " -i "dbuserpassword" DATABASEPASSWORD
+  read -p "Enter your database name for gnuboard (ex:gnuboard) : " DATABASE \
+  && rm -rf gnuboard; git clone https://github.com/woosungchoi/docker-gnuboard gnuboard \
+  && cd gnuboard \
   && sed -i "s/<rootdbpassword>/$ROOTDBPASSWORD/g" .env \
   && sed -i "s/<databaseuser>/$DATABASEUSER/g" .env \
   && sed -i "s/<databasepassword>/$DATABASEPASSWORD/g" .env \
@@ -30,7 +30,7 @@ if [ "$1" == "setup" ]; then
   && sed -i "s/<domain>/$DOMAIN/g" docker-compose.production.yml \
   && sed -i "s/<email>/$EMAIL/g" docker-compose.yml \
   && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/ssl-conf \
-  && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/rhymix.conf \
+  && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/gnuboard.conf \
   && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/portainer.conf \
   && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/phpmyadmin.conf \
   && echo 'Setting timezone to Asia/Seoul...' \
@@ -53,7 +53,6 @@ if [ "$1" == "setup" ]; then
   && sudo docker-compose down -v \
   && sudo mkdir -p /usr/share/nginx/html;
   curl -sSLo nginx/conf.d/options-ssl-nginx https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf \
-  && curl -sSLo nginx/conf.d/rhymix-rewrite https://raw.githubusercontent.com/rhymix/rhymix/master/common/manual/server_config/rhymix-nginx.conf \
   && sudo chmod a+x build/docker-entrypoint.sh \
   && sudo chmod a+x dc \
   && mv docker-compose.yml docker-compose.ssl.yml \
@@ -67,7 +66,7 @@ if [ "$1" == "setup" ]; then
   && echo 'by Rafael Correa Gomes and Woosung Choi' \
   && echo 'Below is a list of containers.'\
   && sudo docker-compose ps \
-  && echo 'Access your rhymix: https://'$DOMAIN;
+  && echo 'Access your gnuboard: https://'$DOMAIN;
   echo 'Access your phpmyadmin: https://pma.'$DOMAIN;
   echo 'Access your portainer: https://port.'$DOMAIN;
 fi
