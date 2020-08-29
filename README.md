@@ -40,7 +40,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt install curl git -y && sud
 ```
 
 ```bash
-curl -s https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dc | bash -s setup
+curl -o dc https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dc && bash dc setup && rm -f dc
 ```
 
 ## Gnuboard Install Configuration
