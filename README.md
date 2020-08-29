@@ -24,6 +24,7 @@ These are some reasons why use this Docker Compose in your `Gnuboard` production
 - Certbot latest docker image
 - Phpmyadmin latest docker image(fpm-alpine)
 - Portainer latest docker image
+- SMTP latest docker image for SMTP mail
 - Docker
 - Docker-compose
 
