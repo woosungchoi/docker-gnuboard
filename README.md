@@ -45,17 +45,15 @@ curl -o dc https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/
 
 ## Gnuboard Install Configuration
 
-DB : `mysql`
+### MySQL information
 
-DB server address : `db`
+Host : `db`
 
-DB server port : `3306`
+User : `YOUR DATABASE USERNAME`
 
-DB ID : `YOUR DATABASE USERNAME`
+Password : `YOUR DATABASE PASSWORD`
 
-DB Password : `YOUR DATABASE PASSWORD`
-
-DB name : `YOUR DATABASE NAME`
+DB : `YOUR DATABASE NAME`
 
 
 ## URLs
