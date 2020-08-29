@@ -20,6 +20,12 @@ services:
       - /usr/share/nginx/html:/usr/share/nginx/html
     command: certonly -n --webroot -w /usr/share/nginx/html -d <domain> -d www.<domain> -d port.<domain> -d pma.<domain>
 
+  smtp:
+    image: namshi/smtp
+    container_name: smtp_relay
+    restart: always
+    env_file: .env
+
   php:
     depends_on:
       - db
