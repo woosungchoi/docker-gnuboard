@@ -33,8 +33,8 @@ RUN set -ex; \
 		mysqli \
 		zip \
 	; \
-	pecl install imagick-3.4.4 redis; \
-	docker-php-ext-enable imagick redis; \
+	pecl install imagick-3.4.4; \
+	docker-php-ext-enable imagick; \
 	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
