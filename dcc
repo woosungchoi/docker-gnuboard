@@ -38,7 +38,7 @@ if [ "$1" == "setup" ]; then
   && echo 'Installing Docker...' \
   && sudo yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine \
   && sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo \
-  && sudo dnf install --nobest docker-ce docker-ce-cli containerd.io \
+  && sudo dnf install -y --nobest docker-ce docker-ce-cli containerd.io \
   && sudo systemctl start docker && sudo systemctl enable --now docker \
   && if [ ! -f /usr/bin/docker-compose ] ; then
         echo 'Installing Docker Compose...' \
