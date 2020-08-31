@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "start" ]; then
+    docker-compose start
+fi
+
+if [ "$1" == "stop" ]; then
+    docker-compose stop
+fi
+
+if [ "$1" == "update" ]; then    
+    docker-compose pull && docker pull php:7.4-fpm-alpine && docker-compose up --build -d && docker image prune -f
+fi
+
+if [ "$1" == "setup" ]; then
+  echo 'Setting system...' \
+  && read -p "Enter your domain (ex:mydomain.com) : " DOMAIN
+  read -p "Enter your email address for SSL certificate (ex:myemail@email.com) : " EMAIL
+  read -p "Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
+  read -p "Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
+  read -p "Enter your database password for gnuboard (ex:dbpassword) : " -i "dbuserpassword" DATABASEPASSWORD
+  read -p "Enter your database name for gnuboard (ex:gnuboard) : " DATABASE \
+  && rm -rf gnuboard; git clone https://github.com/woosungchoi/docker-gnuboard gnuboard \
+  && cd gnuboard \
+  && sed -i "s/<rootdbpassword>/$ROOTDBPASSWORD/g" .env \
+  && sed -i "s/<databaseuser>/$DATABASEUSER/g" .env \
+  && sed -i "s/<databasepassword>/$DATABASEPASSWORD/g" .env \
+  && sed -i "s/<database>/$DATABASE/g" .env \
+  && sed -i "s/<domain>/$DOMAIN/g" docker-compose.yml \
+  && sed -i "s/<domain>/$DOMAIN/g" docker-compose.production.yml \
+  && sed -i "s/<email>/$EMAIL/g" docker-compose.yml \
+  && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/ssl-conf \
+  && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/gnuboard.conf \
+  && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/portainer.conf \
+  && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/phpmyadmin.conf \
+  && echo 'Setting timezone to Asia/Seoul...' \
+  && sudo timedatectl set-timezone Asia/Seoul \
+  && echo 'Installing Docker...' \
+  && sudo yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine \
+  && sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo \
+  && sudo dnf install -y --nobest docker-ce docker-ce-cli containerd.io \
+  && sudo systemctl start docker && sudo systemctl enable --now docker \
+  && if [ ! -f /usr/bin/docker-compose ] ; then
+        echo 'Installing Docker Compose...' \
+        && sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose \
+        && sudo chmod +x /usr/bin/docker-compose
+        else echo 'Skip Installing Docker Compose'
+     fi
+  echo 'Installing SSL...' \
+  && sudo docker-compose up \
+  && echo 'Preparing docker-compose up' \
+  && sudo docker-compose down -v \
+  && sudo mkdir -p /usr/share/nginx/html;
+  curl -sSLo nginx/conf.d/options-ssl-nginx https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf \
+  && sudo chmod a+x build/docker-entrypoint.sh \
+  && sudo chmod a+x dc \
+  && mv docker-compose.yml docker-compose.ssl.yml \
+  && mv docker-compose.production.yml docker-compose.yml \
+  && echo 'Configuring cron...' \
+  && echo "0 23 * * * docker start certbot && docker restart nginx >> /var/log/docker_cron.log 2>&1" >> mycron \
+  && sudo crontab mycron; rm mycron \
+  && echo 'Starting Docker ...' \
+  && sudo docker-compose up -d  \
+  && echo 'Done! 🎉' \
+  && echo 'by Rafael Correa Gomes and Woosung Choi' \
+  && echo 'Below is a list of containers.'\
+  && sudo docker-compose ps \
+  && echo 'Access your gnuboard: https://'$DOMAIN;
+  echo 'Access your phpmyadmin: https://pma.'$DOMAIN;
+  echo 'Access your portainer: https://port.'$DOMAIN;
+fi
