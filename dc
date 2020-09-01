@@ -9,7 +9,7 @@ if [ "$1" == "stop" ]; then
 fi
 
 if [ "$1" == "update" ]; then    
-    docker-compose pull && docker pull php:7.4-fpm-alpine && docker-compose up --build -d && docker image prune -f
+    docker-compose pull && docker-compose up --build -d && docker image prune -f
 fi
 
 if [ "$1" == "setup" ]; then
