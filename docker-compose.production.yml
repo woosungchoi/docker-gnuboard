@@ -20,6 +20,16 @@ services:
       - /usr/share/nginx/html:/usr/share/nginx/html
     command: certonly -n --webroot -w /usr/share/nginx/html -d <domain> -d www.<domain> -d port.<domain> -d pma.<domain>
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: unless-stopped
+    volumes:
+      - ./data/dataredis:/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru --appendonly yes
+
   smtp:
     image: namshi/smtp
     container_name: smtp
