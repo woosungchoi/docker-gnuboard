@@ -20,6 +20,7 @@ These are some reasons why use this Docker Compose in your `Gnuboard` production
 - Gnuboard latest(including rewrite configuration)
 - Php7.4 latest docker image(alpine)
 - MariaDB latest docker image
+- Redis latest docker image(alpine)
 - Nginx latest docker image(alpine)
 - Certbot latest docker image
 - Phpmyadmin latest docker image(fpm-alpine)
