@@ -82,6 +82,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - ./php/php.ini:/usr/local/etc/php/php.ini
       - phpmyadmin:/var/www/html
 
   portainer:
