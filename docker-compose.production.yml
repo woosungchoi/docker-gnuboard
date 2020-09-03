@@ -70,7 +70,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:fpm-alpine
+    image: phpmyadmin:fpm-alpine
     container_name: phpmyadmin
     #ports:
     #  - "80:80"
