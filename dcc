@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 if [ "$1" == "start" ]; then
-    docker-compose start
+    sudo docker-compose start
 fi
 
 if [ "$1" == "stop" ]; then
-    docker-compose stop
+    sudo docker-compose stop
 fi
 
 if [ "$1" == "update" ]; then    
-    docker-compose pull && docker-compose up --build -d && docker image prune -f
+    sudo docker pull woosungchoi/fpm-alpine && sudo docker-compose pull && sudo docker-compose up --build -d && sudo docker image prune -f
 fi
 
 if [ "$1" == "setup" ]; then
