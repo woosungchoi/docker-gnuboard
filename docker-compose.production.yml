@@ -86,7 +86,7 @@ services:
       - phpmyadmin:/var/www/html
 
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer-ce:alpine
     container_name: portainer
     restart: unless-stopped
     #ports:
