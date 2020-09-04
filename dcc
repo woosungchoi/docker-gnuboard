@@ -18,7 +18,7 @@ if [ "$1" == "setup" ]; then
   read -p "Enter your email address for SSL certificate (ex:myemail@email.com) : " EMAIL
   read -p "Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
   read -p "Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
-  read -p "Enter your database password for gnuboard (ex:dbpassword) : " -i "dbuserpassword" DATABASEPASSWORD
+  read -p "Enter your database password for gnuboard (ex:dbpassword) : " DATABASEPASSWORD
   read -p "Enter your database name for gnuboard (ex:gnuboard) : " DATABASE \
   && rm -rf gnuboard; git clone https://github.com/woosungchoi/docker-gnuboard gnuboard \
   && cd gnuboard \
