@@ -31,7 +31,7 @@ These are some reasons why use this Docker Compose in your `Gnuboard` production
 
 ## How to use this source ?
 
-Make sure that your `domain` and `*.domain` are pointing to your server IP.
+Make sure that your `domain` and `pma.domain` and `port.domain` are pointing to your server IP.
 
 Open `80`,`443` port for connect.
 
