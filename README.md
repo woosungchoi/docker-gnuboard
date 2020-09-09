@@ -78,6 +78,29 @@ Phpmyadmin : https://pma.yourdomain.com
 
 Portainer : https://port.yourdomain.com
 
+
+## How do I use this source locally?
+
+### For Ubuntu 20.04 LTS users
+
+```bash
+sudo apt update -y && sudo apt upgrade -y && sudo apt install curl git -y && sudo apt autoremove -y
+```
+
+```bash
+curl -o dcl https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dcl && bash dcl setup && rm -f dcl
+```
+
+### For Centos 8 users
+
+```bash
+sudo yum -y update && sudo yum install -y curl git
+```
+
+```bash
+curl -o dccl https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dccl && bash dccl setup && rm -f dccl
+```
+
 ## Commands
 
 | Commands  | Description  |
