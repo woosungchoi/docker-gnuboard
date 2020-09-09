@@ -79,7 +79,7 @@ Phpmyadmin : https://pma.yourdomain.com
 Portainer : https://port.yourdomain.com
 
 
-## How do I use this source locally?
+## How do I use this source locally and non SSL on dev environments?
 
 ### For Ubuntu 20.04 LTS users
 
