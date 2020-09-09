@@ -14,14 +14,14 @@ fi
 
 if [ "$1" == "setup" ]; then
   echo 'Setting system...' \
-  && read -p "Enter your domain (ex:mydomain.com) : " DOMAIN
-  read -p "Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
-  read -p "Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
-  read -p "Enter your database password for gnuboard (ex:dbpassword) : " DATABASEPASSWORD
-  read -p "Enter your database name for gnuboard (ex:gnuboard) : " DATABASE
-  read -p "Which port do you want to access the web server on? (ex : 80) " WEB_PORT
-  read -p "Which port do you want to access to Portainer? (ex : 9000) " PORTAINER_PORT
-  read -p "Which port do you want to access to Phpmyadmin? (ex : 8080) " PMA_PORT \
+  && read -p "[1/8] Enter your domain (ex:mydomain.com) : " DOMAIN
+  read -p "[2/8] Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
+  read -p "[3/8] Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
+  read -p "[4/8] Enter your database password for gnuboard (ex:dbpassword) : " DATABASEPASSWORD
+  read -p "[5/8] Enter your database name for gnuboard (ex:gnuboard) : " DATABASE
+  read -p "[6/8] Which port do you want to access the web server on? (ex : 80) " WEB_PORT
+  read -p "[7/8] Which port do you want to access to Portainer? (ex : 9000) " PORTAINER_PORT
+  read -p "[8/8] Which port do you want to access to Phpmyadmin? (ex : 8080) " PMA_PORT \
   && rm -rf gnuboard; git clone https://github.com/woosungchoi/docker-gnuboard gnuboard \
   && cd gnuboard \
   && mv docker-compose.yml docker-compose.ssl.yml \

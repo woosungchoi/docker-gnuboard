@@ -14,12 +14,12 @@ fi
 
 if [ "$1" == "setup" ]; then
   echo 'Setting system...' \
-  && read -p "Enter your domain (ex:mydomain.com) : " DOMAIN
-  read -p "Enter your email address for SSL certificate (ex:myemail@email.com) : " EMAIL
-  read -p "Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
-  read -p "Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
-  read -p "Enter your database password for gnuboard (ex:dbpassword) : " DATABASEPASSWORD
-  read -p "Enter your database name for gnuboard (ex:gnuboard) : " DATABASE \
+  && read -p "[1/6] Enter your domain (ex:mydomain.com) : " DOMAIN
+  read -p "[2/6] Enter your email address for SSL certificate (ex:myemail@email.com) : " EMAIL
+  read -p "[3/6] Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
+  read -p "[4/6] Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
+  read -p "[5/6] Enter your database password for gnuboard (ex:dbpassword) : " DATABASEPASSWORD
+  read -p "[6/6] Enter your database name for gnuboard (ex:gnuboard) : " DATABASE \
   && rm -rf gnuboard; git clone https://github.com/woosungchoi/docker-gnuboard gnuboard \
   && cd gnuboard \
   && sed -i "s/<rootdbpassword>/$ROOTDBPASSWORD/g" .env \
