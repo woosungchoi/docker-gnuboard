@@ -37,7 +37,8 @@ if [ "$1" == "setup" ]; then
   && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/portainer.conf \
   && sed -i "s/<domain>/$DOMAIN/g" nginx/conf.d/phpmyadmin.conf \
   && sed -i "s/<web_port>/$WEB_PORT/g" nginx/conf.d/gnuboard.conf \
-  && sed -i "s/<portainer_port>/$PORTAINER_PORT/g" nginx/conf.d/portainer.conf \
+  && sed -i "s/<pma_port>/$PMA_PORT/g" docker-compose.yml \
+  && sed -i "s/<portainer_port>/$PORTAINER_PORT/g" docker-compose.yml \
   && sed -i "s/<pma_port>/$PMA_PORT/g" nginx/conf.d/phpmyadmin.conf \
   && echo 'Setting timezone to Asia/Seoul...' \
   && sudo timedatectl set-timezone Asia/Seoul \
