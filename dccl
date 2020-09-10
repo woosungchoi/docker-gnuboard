@@ -14,7 +14,7 @@ fi
 
 if [ "$1" == "setup" ]; then
   echo 'Setting system...' \
-  && read -p "[1/8] Enter your domain (ex:mydomain.com) : " DOMAIN
+  && read -p "[1/8] Enter your domain (ex : mydomain.com or localhost) : " DOMAIN
   read -p "[2/8] Enter your root database password (ex:rootdbpassword) : " ROOTDBPASSWORD
   read -p "[3/8] Enter your database username for gnuboard (ex:dbuser) : " DATABASEUSER
   read -p "[4/8] Enter your database password for gnuboard (ex:dbpassword) : " DATABASEPASSWORD
