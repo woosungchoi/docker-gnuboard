@@ -81,7 +81,7 @@ Portainer : https://port.yourdomain.com
 
 ## How to setup automatic execution of upgrade to latest version of Docker image
 
-First, change the `/your/path/docker-multi-site/` part of the `docker_upgrade.sh` file to suit your environment.
+First, change the `/your/path/to/docker-gnuboard/` part of the `docker_upgrade.sh` file to suit your environment.
 
 Then, make this file executable.
 
@@ -89,11 +89,13 @@ Then, make this file executable.
 chmod a+x docker_upgrade.sh
 ```
 
-And put it in crontab. Change the `/your/path/docker-gnuboard/` part of the content below.
+And put it in crontab. Change the `/your/path/to/docker-gnuboard/` part of the content below.
 
 ```
-echo "30 12 * * * /your/path/docker-gnuboard/docker_upgrade.sh >> /var/log/docker_upgrade_cron.log 2>&1" >> mycron && sudo crontab mycron && rm mycron
+echo "30 12 * * * /your/path/to/docker-gnuboard/docker_upgrade.sh >> /var/log/docker_upgrade_cron.log 2>&1" >> mycron && sudo crontab mycron && rm mycron
 ```
+
+---
 
 ## How do I use this source locally and non SSL on dev environments?
 
