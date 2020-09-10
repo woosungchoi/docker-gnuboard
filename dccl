@@ -62,7 +62,7 @@ if [ "$1" == "setup" ]; then
   && echo 'by Woosung Choi' \
   && echo 'Below is a list of containers.'\
   && sudo docker-compose ps \
-  && echo 'Access your gnuboard: http://localhost:'$WEB_PORT;
-  echo 'Access your phpmyadmin: http://localhost:'$PMA_PORT;
-  echo 'Access your portainer: http://localhost:'$PORTAINER_PORT;
+  && echo 'Access your gnuboard: http://'$DOMAIN':'$WEB_PORT;
+  echo 'Access your phpmyadmin: http://'$DOMAIN':'$PMA_PORT;
+  echo 'Access your portainer: http://'$DOMAIN':'$PORTAINER_PORT;
 fi
