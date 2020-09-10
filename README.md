@@ -81,7 +81,7 @@ Portainer : https://port.yourdomain.com
 
 ## How to setup automatic execution of upgrade to latest version of Docker image
 
-First, change the `/your/path/docker-multi-site/` part of the `docker_upgrade.sh` file to suit your environment.
+First, change the `/your/path/to/docker-gnuboard/` part of the `docker_upgrade.sh` file to suit your environment.
 
 Then, make this file executable.
 
