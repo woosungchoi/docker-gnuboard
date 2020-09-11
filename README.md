@@ -88,7 +88,7 @@ Portainer : https://port.yourdomain.com
 
 ## How to setup automatic execution of upgrade to latest version of Docker image
 
-First, change the `/your/path/to/docker-gnuboard/` part of the `docker_upgrade.sh` file to suit your environment.
+First, change the `/your/path/to/gnuboard/` part of the `docker_upgrade.sh` file to suit your environment.
 
 Then, make this file executable.
 
@@ -96,10 +96,10 @@ Then, make this file executable.
 chmod a+x docker_upgrade.sh
 ```
 
-And put it in crontab. Change the `/your/path/to/docker-gnuboard/` part of the content below.
+And put it in crontab. Change the `/your/path/to/gnuboard/` part of the content below.
 
 ```
-echo "30 12 * * * /your/path/to/docker-gnuboard/docker_upgrade.sh >> /var/log/docker_upgrade_cron.log 2>&1" >> mycron && sudo crontab mycron && rm mycron
+echo "30 12 * * * /your/path/to/gnuboard/docker_upgrade.sh >> /var/log/docker_upgrade_cron.log 2>&1" >> mycron && sudo crontab mycron && rm mycron
 ```
 
 ---
