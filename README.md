@@ -64,44 +64,6 @@ sudo yum -y update && sudo yum install -y curl git crontabs
 curl -o dcc https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dcc && bash dcc setup && rm -f dcc
 ```
 
-## Gnuboard Install Configuration
-
-### MySQL information
-
-Host : `db`
-
-User : `YOUR DATABASE USERNAME`
-
-Password : `YOUR DATABASE PASSWORD`
-
-DB : `YOUR DATABASE NAME`
-
-
-## URLs
-
-Gnuboard : https://yourdomain.com
-
-Phpmyadmin : https://pma.yourdomain.com
-
-Portainer : https://port.yourdomain.com
-
-
-## How to setup automatic execution of upgrade to latest version of Docker image
-
-First, change the `/your/path/to/gnuboard/` part of the `docker_upgrade.sh` file to suit your environment.
-
-Then, make this file executable.
-
-```
-chmod a+x docker_upgrade.sh
-```
-
-And put it in crontab. Change the `/your/path/to/gnuboard/` part of the content below.
-
-```
-echo "30 12 * * * /your/path/to/gnuboard/docker_upgrade.sh >> /var/log/docker_upgrade_cron.log 2>&1" >> mycron && sudo crontab mycron && rm mycron
-```
-
 ---
 
 ## How do I use this source locally and non SSL on dev environments?
@@ -124,6 +86,54 @@ sudo yum -y update && sudo yum install -y curl git
 
 ```bash
 curl -o dccl https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dccl && bash dccl setup && rm -f dccl
+```
+
+### For Windows 10 WSL2 users
+
+Install WSL2 and docker
+
+https://www.wsgvet.com/ubuntu/160 , https://www.wsgvet.com/ubuntu/180
+
+```bash
+curl -o dcwl https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dcwl && bash dcwl setup && rm -f dcwl
+```
+
+---
+
+## Gnuboard Install Configuration
+
+### MySQL information
+
+Host : `db`
+
+User : `YOUR DATABASE USERNAME`
+
+Password : `YOUR DATABASE PASSWORD`
+
+DB : `YOUR DATABASE NAME`
+
+## URLs
+
+Gnuboard : https://yourdomain.com
+
+Phpmyadmin : https://pma.yourdomain.com
+
+Portainer : https://port.yourdomain.com
+
+## How to setup automatic execution of upgrade to latest version of Docker image
+
+First, change the `/your/path/to/gnuboard/` part of the `docker_upgrade.sh` file to suit your environment.
+
+Then, make this file executable.
+
+```
+chmod a+x docker_upgrade.sh
+```
+
+And put it in crontab. Change the `/your/path/to/gnuboard/` part of the content below.
+
+```
+echo "30 12 * * * /your/path/to/gnuboard/docker_upgrade.sh >> /var/log/docker_upgrade_cron.log 2>&1" >> mycron && sudo crontab mycron && rm mycron
 ```
 
 ## Commands
