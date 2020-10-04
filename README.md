@@ -95,6 +95,10 @@ Install WSL2 Ubuntu 20.04 LTS and docker
 https://www.wsgvet.com/ubuntu/160 , https://www.wsgvet.com/ubuntu/180
 
 ```bash
+sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+```
+
+```bash
 curl -o dcwl https://raw.githubusercontent.com/woosungchoi/docker-gnuboard/master/dcwl && bash dcwl setup && rm -f dcwl
 ```
 
