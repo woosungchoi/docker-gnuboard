@@ -22,12 +22,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
     command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru --appendonly yes
 
-  smtp:
-    image: namshi/smtp
-    container_name: smtp
-    restart: always
-    env_file: .env
-
   php:
     depends_on:
       - db
